@@ -46,11 +46,11 @@ while (!lines[index].trim().startsWith('// #INLINE_START')) {
 index++
 
 while (!lines[index].trim().startsWith('// #INLINE_END')) {
+  const filePath = path.resolve(__dirname, lines[index].trim())
+  content += `\n// ${filePath}\n${fs.readFileSync(filePath)}\n`
+
   index++
   if (index >= lines.length) throw new Error('NO INCLUDE END')
-
-  const filePath = path.resolve(__dirname, lines[index].trim())
-  content += `\n//${filePath}\n${fs.readFileSync(filePath)}\n`
 }
 index++
 

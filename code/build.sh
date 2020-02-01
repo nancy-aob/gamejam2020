@@ -1,0 +1,1 @@
+node inline.js && cat _built.js | pbcopy
